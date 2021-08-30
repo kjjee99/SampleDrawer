@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import androidx.fragment.app.DialogFragment;
+
 import androidx.fragment.app.Fragment;
 
 import org.techtown.drawer.backend.ChallengeItem;
@@ -42,7 +42,7 @@ public class Challenge_all_fragment extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putString("title", challengeItems.get(position).getTitle());
                 bundle.putString("content", challengeItems.get(position).getContent());
-                DialogFragment dialog = new DialogFragment();
+                Challenge_dialog dialog = new Challenge_dialog();
                 dialog.setArguments(bundle);
                 dialog.show(getActivity().getSupportFragmentManager(), "tag");
             }

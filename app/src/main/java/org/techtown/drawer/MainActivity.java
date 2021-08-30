@@ -87,10 +87,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         getSupportFragmentManager().beginTransaction().replace(R.id.container, curFragment).commit();
     }
-    public void showChallengeAll() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_container, new Challenge_all_fragment()).commit();
-    }
-    public void showChallengeMy() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_container, new Challenge_my_fragment()).commit();
-    }
+//    public void showChallengeAll() {
+//        getSupportFragmentManager().beginTransaction().replace(R.id.main_container, new Challenge_all_fragment()).commit();
+//    }
+//    public void showChallengeMy() {
+//        getSupportFragmentManager().beginTransaction().replace(R.id.main_container, new Challenge_my_fragment()).commit();
+//    }
 }
