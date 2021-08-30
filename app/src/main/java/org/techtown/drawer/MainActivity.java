@@ -1,29 +1,16 @@
 package org.techtown.drawer;
 
-import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.ContextMenu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
-
-import com.google.android.material.navigation.NavigationView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.core.view.GravityCompat;
-import androidx.fragment.app.Fragment;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 
-import org.techtown.drawer.Campaign_fragment;
-import org.techtown.drawer.Challenge_fragment;
-import org.techtown.drawer.FragmentCallback;
-import org.techtown.drawer.Home_fragment;
-import org.techtown.drawer.R;
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, FragmentCallback {
 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="10pt">
+    <TextView
+        android:id="@+id/challenge_all_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15pt"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:text="title"/>
+    <TextView
+        android:id="@+id/challenge_all_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10pt"
+        android:paddingLeft="5pt"
+        android:text="content"/>
+</LinearLayout>

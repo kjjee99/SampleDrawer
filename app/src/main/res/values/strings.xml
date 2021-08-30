@@ -14,4 +14,6 @@
     <string name="text_content">Recycle Helper는 재활용 마크를 인식하여 정확한 분리배출 방법을 알려줍니다.\n\n상단의 카메라 버튼을 클릭하여 재활용 마크를 촬영하거나\n갤러리 버튼을 클릭하여 업로드할 수 있습니다.</string>
 
     <string name="home_second">Home Second</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
