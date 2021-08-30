@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if(position ==0){
             curFragment = homefragment;
-            toolbar.setTitle("Recycle Helper");
+            toolbar.setTitle("리싸이클헬퍼");
         }
         else if(position ==1){
             curFragment = challengefragment;
