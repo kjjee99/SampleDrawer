@@ -7,11 +7,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/campaign_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10pt"
-        android:paddingTop="3pt"
-        android:paddingRight="10pt"></ListView>
+        android:layout_height="match_parent" />
 </LinearLayout>
