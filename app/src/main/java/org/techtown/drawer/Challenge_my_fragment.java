@@ -28,6 +28,15 @@ public class Challenge_my_fragment extends Fragment {
     private static ChallengeAdapter myChallengeAdapter;
     public static final String MyPREFERENCES = "MyPrefs";
 
+//    public static ExplainCampaign newInstance(String param1, String param2) {
+//        ExplainCampaign fragment = new ExplainCampaign();
+//        Bundle args = new Bundle();
+//        args.putString(ARG_PARAM1, param1);
+//        args.putString(ARG_PARAM2, param2);
+//        fragment.setArguments(args);
+//        return fragment;
+//    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
