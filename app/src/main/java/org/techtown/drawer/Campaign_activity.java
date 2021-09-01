@@ -55,7 +55,8 @@ public class Campaign_activity extends AppCompatActivity {
         Map<String, String> templateArgs = new HashMap<>();
         templateArgs.put("title", "바다거북이를 함께 살려요!");
         templateArgs.put("description", "text");
-        templateArgs.put("url", "https://www.naver.com");
+        templateArgs.put("url", "자세히 보기");
+
         KakaoLinkService.getInstance().sendCustom(this, templateID, templateArgs, new ResponseCallback<KakaoLinkResponse>() {
             @Override
             public void onFailure(ErrorResult errorResult) {
