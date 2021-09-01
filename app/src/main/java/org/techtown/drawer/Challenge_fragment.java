@@ -10,7 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
-import org.techtown.drawer.backend.VPAdapter;
+import org.techtown.drawer.Adapter.VPAdapter;
 
 public class Challenge_fragment extends Fragment {
     private static final String TAG = "Challenge_fragment";

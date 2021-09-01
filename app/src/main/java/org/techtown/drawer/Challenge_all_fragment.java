@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import org.techtown.drawer.backend.ChallengeItem;
+import org.techtown.drawer.VO.ChallengeItem;
 
 import java.util.ArrayList;
 import java.util.List;

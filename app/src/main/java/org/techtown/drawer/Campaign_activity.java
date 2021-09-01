@@ -13,7 +13,8 @@ import com.kakao.kakaolink.v2.KakaoLinkService;
 import com.kakao.network.ErrorResult;
 import com.kakao.network.callback.ResponseCallback;
 
-import org.techtown.drawer.backend.CampaignData;
+import org.techtown.drawer.Adapter.Campaign_adapter;
+import org.techtown.drawer.VO.CampaignData;
 
 import java.util.HashMap;
 import java.util.Map;

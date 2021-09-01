@@ -1,4 +1,4 @@
-package org.techtown.drawer.backend;
+package org.techtown.drawer.VO;
 
 import lombok.Builder;
 import lombok.Getter;

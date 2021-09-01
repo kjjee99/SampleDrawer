@@ -1,4 +1,4 @@
-package org.techtown.drawer;
+package org.techtown.drawer.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.techtown.drawer.backend.CampaignData;
+import org.techtown.drawer.R;
+import org.techtown.drawer.VO.CampaignData;
 
 import java.util.ArrayList;
 
@@ -44,7 +45,7 @@ public class Campaign_adapter extends RecyclerView.Adapter<Campaign_adapter.View
         }
     }
 
-    void addItem(CampaignData campaignData){
+    public void addItem(CampaignData campaignData){
         listData.add(campaignData);
     }
 
