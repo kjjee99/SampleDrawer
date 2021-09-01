@@ -1,43 +1,39 @@
 package org.techtown.drawer.Adapter;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import org.techtown.drawer.Challenge_all_fragment;
-import org.techtown.drawer.Challenge_my_fragment;
-
 import java.util.ArrayList;
+import java.util.List;
 
 public class VPAdapter extends FragmentPagerAdapter {
-    public ArrayList<Fragment> items = new ArrayList<>();
-    public VPAdapter(FragmentManager fm) {super(fm);}
+    private final List<Fragment> fragmentList = new ArrayList<>();
+    private final List<String> tabTitles = new ArrayList<>();
 
-    @Override
-    public Fragment getItem(int position) {
-        switch (position){
-            case 0:
-                Challenge_all_fragment challengeAll = new Challenge_all_fragment();
-                return challengeAll;
-            case 1:
-                Challenge_my_fragment challengeMy = new Challenge_my_fragment();
-                return challengeMy;
-            default:
-                return null;
-        }
+    public VPAdapter(FragmentManager fm){
+        super(fm);
     }
 
-    public void addItem(Fragment item) {items.add(item);}
+    @Override
+    public Fragment getItem(int position){
+        return fragmentList.get(position);
+    }
 
     @Override
     public int getCount() {
-        return items.size();
+        return tabTitles.size();
     }
 
+    @Nullable
+    @Override
     public CharSequence getPageTitle(int position){
-        if(position == 0)
-            return "진행중인 챌린지";
-        else
-            return "나의 챌린지";
+        return tabTitles.get(position);
+    }
+
+    public void AddFragement(Fragment fragment, String title){
+        fragmentList.add(fragment);
+        tabTitles.add(title);
     }
 }

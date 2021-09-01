@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Challenge_dialog extends androidx.fragment.app.DialogFragment {
+public class Challenge_all_dialog extends androidx.fragment.app.DialogFragment {
 
 
     @Override
