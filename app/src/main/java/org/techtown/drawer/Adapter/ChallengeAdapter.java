@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -12,15 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
 import org.techtown.drawer.R;
-import org.techtown.drawer.VO.ChallengeItem;
+import org.techtown.drawer.VO.ChallengeData;
 
 import java.util.ArrayList;
 
 public class ChallengeAdapter extends RecyclerView.Adapter<ChallengeAdapter.ViewHolderPage>{
     private ChallengeItemClickListener listener;
-    private ArrayList<ChallengeItem> list;
+    private ArrayList<ChallengeData> list;
 
-    public ChallengeAdapter(ArrayList<ChallengeItem> data){
+    public ChallengeAdapter(ArrayList<ChallengeData> data){
         this.list = data;
     }
     @NonNull
@@ -35,10 +36,6 @@ public class ChallengeAdapter extends RecyclerView.Adapter<ChallengeAdapter.View
     public void setOnItemClickListener(ChallengeItemClickListener listener){
         this.listener = listener;
     }
-    //    public void onItemClick(ViewHolderPage viewHolderPage, View view, int position){
-//        if(listner != null)
-//            listner.onItemClick(viewHolderPage, view, position);
-//    }
     @Override
     public void onBindViewHolder(@NonNull @NotNull ViewHolderPage holder, int position) {
         if(holder instanceof ViewHolderPage){
@@ -56,12 +53,15 @@ public class ChallengeAdapter extends RecyclerView.Adapter<ChallengeAdapter.View
         public LinearLayout itemContact;
         private TextView tvTitle;
         private TextView tvContent;
-        private ChallengeItem item;
+        private ImageView image;
+        private ChallengeData item;
+
         public ViewHolderPage(@NonNull @NotNull View itemView) {
             super(itemView);
             itemContact = itemView.findViewById(R.id.itemID);
-            tvTitle = itemView.findViewById(R.id.tv_title);
-            tvContent = itemView.findViewById(R.id.tv_content);
+            tvTitle = itemView.findViewById(R.id.challengeTitle);
+            tvContent = itemView.findViewById(R.id.challengeContent);
+            image = itemView.findViewById(R.id.challengeImage);
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
@@ -73,10 +73,11 @@ public class ChallengeAdapter extends RecyclerView.Adapter<ChallengeAdapter.View
             });
         }
 
-        public void onBind(ChallengeItem item){
+        public void onBind(ChallengeData item){
             this.item = item;
             tvTitle.setText(item.getTitle());
             tvContent.setText(item.getContent());
+            image.setImageResource(item.getResId());
         }
     }
 }

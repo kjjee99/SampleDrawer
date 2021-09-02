@@ -41,7 +41,7 @@ public class Campaign_activity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         tvTitle.setText(item.getTitle());
-        tvContent.setText(item.getContent());
+        tvContent.setText(item.getExplain());
         kakaoBtn = (Button) findViewById(R.id.kakaoBtn);
         kakaoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,9 +54,8 @@ public class Campaign_activity extends AppCompatActivity {
     public void share_kakao_template(){
         String templateID = "60439";
         Map<String, String> templateArgs = new HashMap<>();
-        templateArgs.put("title", "바다거북이를 함께 살려요!");
-        templateArgs.put("description", "text");
-        templateArgs.put("url", "자세히 보기");
+        templateArgs.put("title", item.getTitle());
+        templateArgs.put("description", item.getContent());
 
         KakaoLinkService.getInstance().sendCustom(this, templateID, templateArgs, new ResponseCallback<KakaoLinkResponse>() {
             @Override

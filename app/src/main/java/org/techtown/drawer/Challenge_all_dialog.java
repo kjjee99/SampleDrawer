@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,8 @@ public class Challenge_all_dialog extends androidx.fragment.app.DialogFragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.challenge_all_dialog,container);
         TextView tvExplain = view.findViewById(R.id.joinchallengeContent);
+        ImageView image = view.findViewById(R.id.challengeImage);
+        image.setImageResource(getArguments().getInt("image"));
         tvExplain.setText(getArguments().getString("content"));
         Button joinChallengeBtn = (Button) view.findViewById(R.id.btn_joinChallenge);
         joinChallengeBtn.setOnClickListener(new View.OnClickListener(){
@@ -38,10 +41,11 @@ public class Challenge_all_dialog extends androidx.fragment.app.DialogFragment {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("title", getArguments().getString("title"));
                 editor.putString("content", getArguments().getString("content"));
+                editor.putInt("image", getArguments().getInt("image"));
                 editor.apply();
                 //updayNumber display
                 startActivity(intent);
-                Toast toasting = Toast.makeText(getActivity().getApplicationContext(), "데이터 전달 성공", Toast.LENGTH_SHORT);
+                Toast toasting = Toast.makeText(getActivity().getApplicationContext(), "나의 챌린지에 추가 성공!", Toast.LENGTH_SHORT);
                 toasting.show();
                 dismiss();
             }

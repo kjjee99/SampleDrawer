@@ -1,5 +1,8 @@
 package org.techtown.drawer.VO;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public class ChallengeData {
     private String title;
     private String content;

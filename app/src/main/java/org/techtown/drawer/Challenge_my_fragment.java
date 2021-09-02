@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.techtown.drawer.Adapter.ChallengeAdapter;
 import org.techtown.drawer.Adapter.ChallengeItemClickListener;
-import org.techtown.drawer.VO.ChallengeItem;
+import org.techtown.drawer.VO.ChallengeData;
 
 import java.util.ArrayList;
 
@@ -24,7 +24,8 @@ public class Challenge_my_fragment extends Fragment {
     //variable
     private String title;
     private String content;
-    private ArrayList<ChallengeItem> items = new ArrayList<>();
+    private int image;
+    private ArrayList<ChallengeData> items = new ArrayList<>();
     private ListView myListView;
     public static final String MyPREFERENCES = "MyPrefs";
 
@@ -40,14 +41,15 @@ public class Challenge_my_fragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        items.add(new ChallengeItem("Fragment2", "222222"));
+        items.add(new ChallengeData("Fragment2", "222222", R.drawable.ex1));
         SharedPreferences prefs = getActivity().getSharedPreferences(MyPREFERENCES, 0);
         if(prefs.contains("title") != false){
             title = prefs.getString("title", null);
             content = prefs.getString("content", null);
+            image = prefs.getInt("image", 0);
 //            Log.v("my", prefs.getString("title", null));
 //            Log.v("my", prefs.getAll().toString());
-            items.add(new ChallengeItem(title, content));
+            items.add(new ChallengeData(title, content, image));
         }
     }
 
