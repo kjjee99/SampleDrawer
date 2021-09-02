@@ -24,7 +24,7 @@ public class Challenge_all_dialog extends androidx.fragment.app.DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.challenge_dialog_fragment,container);
+        View view = inflater.inflate(R.layout.challenge_all_dialog,container);
         TextView tvExplain = view.findViewById(R.id.joinchallengeContent);
         tvExplain.setText(getArguments().getString("content"));
         Button joinChallengeBtn = (Button) view.findViewById(R.id.btn_joinChallenge);
@@ -39,7 +39,7 @@ public class Challenge_all_dialog extends androidx.fragment.app.DialogFragment {
                 editor.putString("title", getArguments().getString("title"));
                 editor.putString("content", getArguments().getString("content"));
                 editor.apply();
-                //update display
+                //updayNumber display
                 startActivity(intent);
                 Toast toasting = Toast.makeText(getActivity().getApplicationContext(), "데이터 전달 성공", Toast.LENGTH_SHORT);
                 toasting.show();

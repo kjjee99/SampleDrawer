@@ -49,7 +49,7 @@ public class Challenge_all_fragment extends Fragment {
                 bundle.putString("content", items.get(position).getContent());
                 Challenge_all_dialog dialoging = new Challenge_all_dialog();
                 dialoging.setArguments(bundle);
-                dialoging.show(getActivity().getSupportFragmentManager(), "tag");
+                dialoging.show(getActivity().getSupportFragmentManager(), "dialog_all");
             }
         });
 
