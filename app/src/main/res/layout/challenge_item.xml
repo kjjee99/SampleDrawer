@@ -54,7 +54,7 @@
                 android:id="@+id/challengeImage"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="#BABABA"
+                android:background="#FFF8DC"
                 android:scaleType="fitXY" />
 
         </LinearLayout>

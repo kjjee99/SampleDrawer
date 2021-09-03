@@ -1,5 +1,7 @@
 package org.techtown.drawer;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +25,7 @@ public class Campaign_activity extends AppCompatActivity {
     private CampaignData item;
     private TextView tvTitle;
     private TextView tvContent;
+    private Button btnURL;
     private Button kakaoBtn;
 
     protected void onCreate(Bundle savedInstanceState){
@@ -36,12 +39,21 @@ public class Campaign_activity extends AppCompatActivity {
 
         tvTitle = findViewById(R.id.tvTitle);
         tvContent = findViewById(R.id.tvContent);
-
+        btnURL = findViewById(R.id.btnURL);
     }
     protected void onResume() {
         super.onResume();
         tvTitle.setText(item.getTitle());
         tvContent.setText(item.getExplain());
+        btnURL.setText(item.getUrl());
+        btnURL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(item.getUrl()));
+                startActivity(intent);
+            }
+        });
         kakaoBtn = (Button) findViewById(R.id.kakaoBtn);
         kakaoBtn.setOnClickListener(new View.OnClickListener() {
             @Override

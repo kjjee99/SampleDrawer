@@ -30,7 +30,8 @@ public class Challenge_my_dialog extends androidx.fragment.app.DialogFragment {
     private int dayNumber = 0;
     private final int GET_GALLERY_IMAGE = 200;
     String today = new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis()));
-    private SharedPreferences sharedPreferences = getActivity().getSharedPreferences(MyPREFERENCES, 0);
+    private SharedPreferences sharedPreferences;
+    TextView tvTitle;
     Button exitBtn;
     Button retryBtn;
     TextView tvSuccess;
@@ -48,7 +49,7 @@ public class Challenge_my_dialog extends androidx.fragment.app.DialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        sharedPreferences = getActivity().getSharedPreferences(MyPREFERENCES, 0);
     }
 
     @Override
@@ -60,6 +61,7 @@ public class Challenge_my_dialog extends androidx.fragment.app.DialogFragment {
         //다시 도전하기 보여주기
         dayNumber = sharedPreferences.getInt("day", 0);
         if(dayNumber == 7){
+            Toast.makeText(getContext().getApplicationContext(), "7일동안 성공했어요! 대단해요👏", Toast.LENGTH_LONG);
             retryBtn.setVisibility(View.VISIBLE);
             retryBtn.setEnabled(true);
             retryBtn.setOnClickListener(new View.OnClickListener(){
@@ -107,6 +109,8 @@ public class Challenge_my_dialog extends androidx.fragment.app.DialogFragment {
     }
 
     public void setButtons(View view){
+        tvTitle = view.findViewById(R.id.dialogTitle);
+        tvTitle.setText(getArguments().getString("title"));
         days.add((Button) view.findViewById(R.id.challenge_first));
         days.add((Button) view.findViewById(R.id.challenge_second));
         days.add((Button) view.findViewById(R.id.challenge_third));
