@@ -45,7 +45,7 @@ public class Campaign_activity extends AppCompatActivity {
         super.onResume();
         tvTitle.setText(item.getTitle());
         tvContent.setText(item.getExplain());
-        btnURL.setText(item.getUrl());
+        btnURL.setText(item.getTitle()+" 사이트 방문");
         btnURL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

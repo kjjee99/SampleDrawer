@@ -53,7 +53,7 @@
                 android:id="@+id/campaignImage"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="#BABABA"
+                android:background="#80FDF5E6"
                 android:scaleType="fitXY" />
 
         </LinearLayout>
