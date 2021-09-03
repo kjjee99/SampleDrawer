@@ -2,12 +2,10 @@ package org.techtown.drawer;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -41,14 +39,11 @@ public class Challenge_my_fragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        items.add(new ChallengeData("Fragment2", "222222", R.drawable.ex1));
         SharedPreferences prefs = getActivity().getSharedPreferences(MyPREFERENCES, 0);
         if(prefs.contains("title") != false){
             title = prefs.getString("title", null);
             content = prefs.getString("content", null);
             image = prefs.getInt("image", 0);
-//            Log.v("my", prefs.getString("title", null));
-//            Log.v("my", prefs.getAll().toString());
             items.add(new ChallengeData(title, content, image));
         }
     }
@@ -66,9 +61,12 @@ public class Challenge_my_fragment extends Fragment {
         adapter.setOnItemClickListener(new ChallengeItemClickListener() {
             @Override
             public void onItemClick(ChallengeAdapter.ViewHolderPage holder, View view, int position) {
-                Log.v("frag2", items.get(position).getContent());
-                Toast.makeText(getContext(), items.get(position).getContent(), Toast.LENGTH_SHORT);
-
+                Bundle bundle = new Bundle();
+                bundle.putString("title", items.get(position).getTitle());
+                bundle.putString("content", items.get(position).getContent());
+                Challenge_my_dialog dialog = new Challenge_my_dialog();
+                dialog.setArguments(bundle);
+                dialog.show(getActivity().getSupportFragmentManager(), "dialog_my");
             }
         });
 
