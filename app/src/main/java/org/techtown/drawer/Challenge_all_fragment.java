@@ -2,6 +2,7 @@ package org.techtown.drawer;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,7 @@ public class Challenge_all_fragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Log.v("all","create");
     }
 
     @Override
@@ -35,6 +36,7 @@ public class Challenge_all_fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.challenge_all_fragment, container, false);
+        Log.v("all","createView");
         RecyclerView recyclerView = v.findViewById(R.id.recyclerview_main_list);
         ChallengeAdapter vpAdapter = new ChallengeAdapter(items);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -59,6 +61,7 @@ public class Challenge_all_fragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        Log.v("all","resume");
         //itemList
         items.add(new ChallengeData("텀블러 사용 챌린지", "텀블러 사용하고 플라스틱 컵 사용 줄이자!", R.drawable.tumbler));
         items.add(new ChallengeData("자전거 이용 챌린지", "가까운 거리는 자전거로 이동하고 운동도 하고!", R.drawable.bicycle));

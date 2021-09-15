@@ -1,6 +1,7 @@
 package org.techtown.drawer;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +25,7 @@ public class Challenge_fragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater. inflate(R.layout.challenge_fragment, container, false);
-
+    Log.v("ing","view");
         tabLayout = view.findViewById(R.id.tabLayout);
         viewPager = view.findViewById(R.id.pager);
         adapter = new VPAdapter(getActivity().getSupportFragmentManager());
@@ -33,7 +34,14 @@ public class Challenge_fragment extends Fragment {
         adapter.AddFragement(new Challenge_my_fragment(), "나의 챌린지");
 
         viewPager.setAdapter(adapter);
+        viewPager.setOffscreenPageLimit(2);
         tabLayout.setupWithViewPager(viewPager);
         return view;
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        Log.v("ing", "resume");
     }
 }

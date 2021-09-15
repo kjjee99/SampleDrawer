@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.kakao.kakaolink.v2.KakaoLinkResponse;
 import com.kakao.kakaolink.v2.KakaoLinkService;
@@ -21,27 +23,36 @@ import org.techtown.drawer.VO.CampaignData;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Campaign_activity extends AppCompatActivity {
+public class Campaign_explain extends Fragment {
     private CampaignData item;
     private TextView tvTitle;
     private TextView tvContent;
     private Button btnURL;
     private Button kakaoBtn;
 
-    protected void onCreate(Bundle savedInstanceState){
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.campaign_explain);
-
-        Bundle bundle = getIntent().getExtras();
-        item = (CampaignData) bundle.getSerializable("campaignItem");
+        item= (CampaignData) getArguments().getSerializable("campaignItem");
 
         Campaign_adapter adapter = new Campaign_adapter();
 
-        tvTitle = findViewById(R.id.tvTitle);
-        tvContent = findViewById(R.id.tvContent);
-        btnURL = findViewById(R.id.btnURL);
+
     }
-    protected void onResume() {
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.campaign_explain, container, false);
+        tvTitle = view.findViewById(R.id.tvTitle);
+        tvContent = view.findViewById(R.id.tvContent);
+        btnURL = view.findViewById(R.id.btnURL);
+        kakaoBtn = (Button) view.findViewById(R.id.kakaoBtn);
+        return view;
+    }
+
+    @Override
+    public void onResume() {
         super.onResume();
         tvTitle.setText(item.getTitle());
         tvContent.setText(item.getExplain());
@@ -54,7 +65,6 @@ public class Campaign_activity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        kakaoBtn = (Button) findViewById(R.id.kakaoBtn);
         kakaoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,7 +79,7 @@ public class Campaign_activity extends AppCompatActivity {
         templateArgs.put("title", item.getTitle());
         templateArgs.put("description", item.getContent());
 
-        KakaoLinkService.getInstance().sendCustom(this, templateID, templateArgs, new ResponseCallback<KakaoLinkResponse>() {
+        KakaoLinkService.getInstance().sendCustom(getContext(), templateID, templateArgs, new ResponseCallback<KakaoLinkResponse>() {
             @Override
             public void onFailure(ErrorResult errorResult) {
                 Log.e("EOTEST", errorResult.toString());

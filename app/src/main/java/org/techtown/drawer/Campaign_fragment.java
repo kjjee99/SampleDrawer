@@ -1,13 +1,13 @@
 package org.techtown.drawer;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,12 +42,15 @@ public class Campaign_fragment extends Fragment {
         adapter.setOnItemClickListener(new CampaignItemClickListener() { //게시글 누르면
             public void onItemClick(Campaign_adapter.ViewHolder holder, View view, int position) {
                 CampaignData item = adapter.getItem(position);
-
-                Intent intent = new Intent(getContext(), Campaign_activity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("campaignItem", item);
-                intent.putExtras(bundle);//putExtras로 Bundle 데이터를 넘겨주고 여기에서getExtras로 데이터를 참조한다.
-                startActivity(intent);
+                Fragment fragment = new Campaign_explain();
+                fragment.setArguments(bundle);
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.container, fragment).commitNow();
+//                Intent intent = new Intent(getContext(), Campaign_activity.class);
+//                intent.putExtras(bundle);//putExtras로 Bundle 데이터를 넘겨주고 여기에서getExtras로 데이터를 참조한다.
+//                startActivity(intent);
             }
         });
         getData();
