@@ -39,6 +39,12 @@ public class Challenge_all_dialog extends androidx.fragment.app.DialogFragment {
                 //휴대폰 내부 저장
                 sharedPreferences = getActivity().getSharedPreferences(MyPreferences, 0);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
+                if(!sharedPreferences.getString("title", null).equals(getArguments().getString("title"))){
+                    editor.remove("day");
+                    editor.remove("date");
+                    editor.commit();
+                }
+
                 editor.putString("title", getArguments().getString("title"));
                 editor.putString("content", getArguments().getString("content"));
                 editor.putInt("image", getArguments().getInt("image"));

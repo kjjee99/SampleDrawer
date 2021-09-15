@@ -39,13 +39,6 @@ public class Challenge_my_fragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferences prefs = getActivity().getSharedPreferences(MyPREFERENCES, 0);
-        if(prefs.contains("title") != false){
-            title = prefs.getString("title", null);
-            content = prefs.getString("content", null);
-            image = prefs.getInt("image", 0);
-            items.add(new ChallengeData(title, content, image));
-        }
     }
 
     @Override
@@ -57,6 +50,16 @@ public class Challenge_my_fragment extends Fragment {
         ChallengeAdapter adapter = new ChallengeAdapter(items);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
+
+        //itemList
+        SharedPreferences prefs = getActivity().getSharedPreferences(MyPREFERENCES, 0);
+        if(prefs.contains("title") != false){
+            title = prefs.getString("title", null);
+            content = prefs.getString("content", null);
+            image = prefs.getInt("image", 0);
+            items.add(new ChallengeData(title, content, image));
+        }
+
 
         adapter.setOnItemClickListener(new ChallengeItemClickListener() {
             @Override

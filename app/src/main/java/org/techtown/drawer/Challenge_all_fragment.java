@@ -27,11 +27,7 @@ public class Challenge_all_fragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        items.add(new ChallengeData("텀블러 사용 챌린지", "텀블러 사용하고 플라스틱 컵 사용 줄이자!", R.drawable.tumbler));
-        items.add(new ChallengeData("자전거 이용 챌린지", "가까운 거리는 자전거로 이동하고 운동도 하고!", R.drawable.bicycle));
-        items.add(new ChallengeData("식물 키우기 챌린지", "반려식물 키우며 \n 이산화탄소 줄이고 \n 내 방 인테리어도 화사하게!", R.drawable.planting));
-        items.add(new ChallengeData("채식 챌린지", "채식 도전하고 온실가스 줄이자!", R.drawable.vegetable));
-        items.add(new ChallengeData("용기내 챌린지", "용기내서 다회용 용기에 음식 포장하자!", R.drawable.lunch_box));
+
     }
 
     @Override
@@ -43,6 +39,7 @@ public class Challenge_all_fragment extends Fragment {
         ChallengeAdapter vpAdapter = new ChallengeAdapter(items);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(vpAdapter);
+
 
         vpAdapter.setOnItemClickListener(new ChallengeItemClickListener() {
             @Override
@@ -58,5 +55,15 @@ public class Challenge_all_fragment extends Fragment {
         });
 
         return v;
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        //itemList
+        items.add(new ChallengeData("텀블러 사용 챌린지", "텀블러 사용하고 플라스틱 컵 사용 줄이자!", R.drawable.tumbler));
+        items.add(new ChallengeData("자전거 이용 챌린지", "가까운 거리는 자전거로 이동하고 운동도 하고!", R.drawable.bicycle));
+        items.add(new ChallengeData("식물 키우기 챌린지", "반려식물 키우며 \n 이산화탄소 줄이고 \n 내 방 인테리어도 화사하게!", R.drawable.planting));
+        items.add(new ChallengeData("채식 챌린지", "채식 도전하고 온실가스 줄이자!", R.drawable.vegetable));
+        items.add(new ChallengeData("용기내 챌린지", "용기내서 다회용 용기에 음식 포장하자!", R.drawable.lunch_box));
     }
 }

@@ -68,8 +68,8 @@ public class Challenge_my_dialog extends androidx.fragment.app.DialogFragment {
                 @Override
                 public void onClick(View v){
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.remove("dayNumber");
-                    editor.remove("dayNumber");
+                    editor.remove("day");
+                    editor.remove("date");
                     editor.commit();
                     Toast.makeText(getActivity().getApplicationContext(), "다시 도전하는 당신! 😘😘", Toast.LENGTH_SHORT).show();
                 }
