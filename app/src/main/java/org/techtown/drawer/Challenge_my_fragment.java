@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,14 +21,10 @@ import java.util.Set;
 public class Challenge_my_fragment extends Fragment {
 
     //variable
-//    private String title;
-//    private String content;
-//    private int image;
     private Set<String> titles;
     private Set<String> contents;
     private Set<String> images;
     private ArrayList<ChallengeData> items = new ArrayList<>();
-    private ListView myListView;
     public static final String MyPREFERENCES = "MyPrefs";
 
 

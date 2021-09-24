@@ -34,11 +34,13 @@ public class Challenge_all_dialog extends androidx.fragment.app.DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.challenge_all_dialog,container);
+        //initialize
         TextView tvExplain = view.findViewById(R.id.joinchallengeContent);
         ImageView image = view.findViewById(R.id.challengeImage);
         image.setImageResource(getArguments().getInt("image"));
         tvExplain.setText(getArguments().getString("content"));
         Button joinChallengeBtn = (Button) view.findViewById(R.id.btn_joinChallenge);
+        //Click Event
         joinChallengeBtn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent intent = new Intent(getContext(), MainActivity.class);
@@ -47,6 +49,7 @@ public class Challenge_all_dialog extends androidx.fragment.app.DialogFragment {
                 SharedPreferences.Editor editor = prefs.edit();
                 //title 비교
                 boolean result = compareTitle();
+                //true일 때, title이 같지 않음
                 if(result == true){
                     defineElements();
                     titles.add(getArguments().getString("title"));
@@ -58,12 +61,12 @@ public class Challenge_all_dialog extends androidx.fragment.app.DialogFragment {
                     editor.apply();
                     Log.v("all_dialog", sharedPreferences.getAll().toString());
 
-                    //updayNumber display
                     startActivity(intent);
                     Toast toasting = Toast.makeText(getActivity().getApplicationContext(), "나의 챌린지에 추가 성공!", Toast.LENGTH_SHORT);
                     toasting.show();
                     dismiss();
                 }
+                //false일 때 title이 같음
                 else{
                     Toast toasting = Toast.makeText(getActivity().getApplicationContext(), "이미 존재하는 챌린지입니다.", Toast.LENGTH_SHORT);
                     toasting.show();
@@ -93,7 +96,7 @@ public class Challenge_all_dialog extends androidx.fragment.app.DialogFragment {
             Set<String> set = prefs.getStringSet("title", null);
             ArrayList<String> list = new ArrayList<>(set);
             for(String str : list){
-                if(str.equals(getArguments().getString("title"))){ return false; }
+                if(str.equals(getArguments().getString("title"))){ return false; }      //같은 title이 존재
             }
         }
         return true;

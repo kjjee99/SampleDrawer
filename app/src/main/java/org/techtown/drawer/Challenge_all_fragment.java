@@ -1,6 +1,5 @@
 package org.techtown.drawer;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,27 +20,14 @@ public class Challenge_all_fragment extends Fragment {
     private ArrayList<ChallengeData> items = new ArrayList<>();
 
     @Override
-    public void onAttach(Context context){
-        super.onAttach(context);
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Log.v("all","create");
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.challenge_all_fragment, container, false);
-        Log.v("all","createView");
         RecyclerView recyclerView = v.findViewById(R.id.recyclerview_main_list);
         ChallengeAdapter vpAdapter = new ChallengeAdapter(items);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(vpAdapter);
-
 
         vpAdapter.setOnItemClickListener(new ChallengeItemClickListener() {
             @Override

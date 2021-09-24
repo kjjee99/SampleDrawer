@@ -50,7 +50,6 @@ public class Challenge_my_dialog extends androidx.fragment.app.DialogFragment {
         View view = inflater.inflate(R.layout.challenge_my_dialog, container, false);
         setButtons(view);
 
-        //다시 도전하기 보여주기
         dayNumber = sharedPreferences.getInt("day", 0);
         //test
 //        dayNumber = 6;
