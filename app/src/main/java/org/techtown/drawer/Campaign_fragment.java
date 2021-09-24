@@ -23,7 +23,6 @@ public class Campaign_fragment extends Fragment {
     ArrayList<CampaignData> items = new ArrayList<CampaignData>();
     private RecyclerView recyclerView;
     private Campaign_adapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 

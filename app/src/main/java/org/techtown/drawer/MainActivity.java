@@ -11,6 +11,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.navigation.NavigationView;
+import com.kakao.sdk.common.KakaoSdk;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, FragmentCallback {
 
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        KakaoSdk.init(this, "c1890c95ef5f48a59ab97dae3617a8ff");
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
