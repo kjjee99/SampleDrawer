@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        KakaoSdk.init(this, "c1890c95ef5f48a59ab97dae3617a8ff");
+        KakaoSdk.init(this, "key number");
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
