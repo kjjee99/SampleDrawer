@@ -138,12 +138,14 @@ public class Challenge_my_dialog extends androidx.fragment.app.DialogFragment {
             Log.v("dialog", setDate);
             editor.apply();
 
-            //성공 메시지
-            Toast.makeText(getActivity().getApplicationContext(), "오늘의 챌린지 도전성공!", Toast.LENGTH_SHORT).show();
+
             //7일 성공시 성공 버튼 활성화
             if(dayNumber == 7){
                 Toast.makeText(getContext().getApplicationContext(), "7일동안 성공했어요! 대단해요👏", Toast.LENGTH_LONG);
                 success();
+            }else if(dayNumber > -1 && dayNumber <7){
+                //성공 메시지
+                Toast.makeText(getActivity().getApplicationContext(), "오늘의 챌린지 도전성공!", Toast.LENGTH_SHORT).show();
             }
         }
     }
