@@ -1,6 +1,7 @@
 package org.techtown.drawer;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        KakaoSdk.init(this, "key number");
+        KakaoSdk.init(this, "key");
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -47,12 +48,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportFragmentManager().beginTransaction().add(R.id.container, homefragment).commit();
     }
 
+    @Override
     public void onBackPressed(){
         if(drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
         }
-        else{
+
+        if(getSupportFragmentManager().getBackStackEntryCount() == 0){
+            Log.v("main",String.valueOf(getSupportFragmentManager().getBackStackEntryCount()));
             super.onBackPressed();
+        }else{
+            Log.v("main","3");
+            getSupportFragmentManager().popBackStack();
         }
     }
 
@@ -90,10 +97,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         getSupportFragmentManager().beginTransaction().replace(R.id.container, curFragment).commit();
     }
-//    public void showChallengeAll() {
-//        getSupportFragmentManager().beginTransaction().replace(R.id.main_container, new Challenge_all_fragment()).commit();
-//    }
-//    public void showChallengeMy() {
-//        getSupportFragmentManager().beginTransaction().replace(R.id.main_container, new Challenge_my_fragment()).commit();
-//    }
+
+    public interface onKeyBackPressedListener{
+        void onBackKey();
+    }
+
+    private onKeyBackPressedListener mBackPressedListener;
+    public void setOnKeyBackPressedListener(onKeyBackPressedListener listener){
+        mBackPressedListener = listener;
+    }
+
+
 }

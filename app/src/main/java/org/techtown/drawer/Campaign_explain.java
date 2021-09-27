@@ -1,5 +1,6 @@
 package org.techtown.drawer;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,13 +18,12 @@ import com.kakao.kakaolink.v2.KakaoLinkService;
 import com.kakao.network.ErrorResult;
 import com.kakao.network.callback.ResponseCallback;
 
-import org.techtown.drawer.Adapter.Campaign_adapter;
 import org.techtown.drawer.VO.CampaignData;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Campaign_explain extends Fragment {
+public class Campaign_explain extends Fragment implements MainActivity.onKeyBackPressedListener {
     private CampaignData item;
     private TextView tvTitle;
     private TextView tvContent;
@@ -34,10 +34,6 @@ public class Campaign_explain extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         item= (CampaignData) getArguments().getSerializable("campaignItem");
-
-        Campaign_adapter adapter = new Campaign_adapter();
-
-
     }
 
     @Override
@@ -90,5 +86,20 @@ public class Campaign_explain extends Fragment {
                 Log.v("kakao", result.getTemplateArgs().toString());
             }
         });
+    }
+
+    @Override
+    public void onBackKey(){
+        MainActivity activity = (MainActivity)getActivity();
+        Log.v("ex", "onBack");
+        activity.setOnKeyBackPressedListener(null);
+        activity.onBackPressed();
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new Campaign_fragment()).addToBackStack(null).commit();
+    }
+    @Override
+    public void onAttach(Context context){
+        super.onAttach(context);
+        Log.v("ex", "context");
+        ((MainActivity)context).setOnKeyBackPressedListener(this);
     }
 }
