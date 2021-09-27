@@ -1,7 +1,6 @@
 package org.techtown.drawer;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -55,10 +54,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         if(getSupportFragmentManager().getBackStackEntryCount() == 0){
-            Log.v("main",String.valueOf(getSupportFragmentManager().getBackStackEntryCount()));
             super.onBackPressed();
         }else{
-            Log.v("main","3");
             getSupportFragmentManager().popBackStack();
         }
     }
@@ -101,11 +98,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public interface onKeyBackPressedListener{
         void onBackKey();
     }
-
-    private onKeyBackPressedListener mBackPressedListener;
-    public void setOnKeyBackPressedListener(onKeyBackPressedListener listener){
-        mBackPressedListener = listener;
-    }
-
 
 }

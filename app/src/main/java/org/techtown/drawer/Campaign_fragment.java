@@ -2,7 +2,6 @@ package org.techtown.drawer;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,17 +19,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Campaign_fragment extends Fragment implements MainActivity.onKeyBackPressedListener {
+public class Campaign_fragment extends Fragment{
     ArrayList<CampaignData> items = new ArrayList<CampaignData>();
     private RecyclerView recyclerView;
     private Campaign_adapter adapter;
     private FragmentTransaction transaction;
-    @Override
-    public void onAttach(Context context){
-        super.onAttach(context);
-        Log.v("ex", "context");
-        ((MainActivity)context).setOnKeyBackPressedListener(this);
-    }
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.campaign_fragment,container,false);
@@ -122,12 +116,5 @@ public class Campaign_fragment extends Fragment implements MainActivity.onKeyBac
 
         // adapter의 값이 변경되었다는 것을 알려줍니다.
         adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onBackKey() {
-        MainActivity activity = (MainActivity)getActivity();
-        activity.setOnKeyBackPressedListener(null);
-        activity.onBackPressed();
     }
 }

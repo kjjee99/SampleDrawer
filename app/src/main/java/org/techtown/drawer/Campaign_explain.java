@@ -1,6 +1,5 @@
 package org.techtown.drawer;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -91,15 +90,7 @@ public class Campaign_explain extends Fragment implements MainActivity.onKeyBack
     @Override
     public void onBackKey(){
         MainActivity activity = (MainActivity)getActivity();
-        Log.v("ex", "onBack");
-        activity.setOnKeyBackPressedListener(null);
         activity.onBackPressed();
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new Campaign_fragment()).addToBackStack(null).commit();
-    }
-    @Override
-    public void onAttach(Context context){
-        super.onAttach(context);
-        Log.v("ex", "context");
-        ((MainActivity)context).setOnKeyBackPressedListener(this);
     }
 }
