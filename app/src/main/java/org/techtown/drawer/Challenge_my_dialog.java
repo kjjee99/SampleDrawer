@@ -53,16 +53,34 @@ public class Challenge_my_dialog extends androidx.fragment.app.DialogFragment {
         dayNumber = sharedPreferences.getInt("day", 0);
         //test
 //        dayNumber = 6;
-
+        String date = sharedPreferences.getString("date", null);
         if(dayNumber == 7){
             success();
         }
         else if(dayNumber > -1 && dayNumber < 7) {
         //하루에 한번만 가능하게
-            String date = sharedPreferences.getString("date", null);
+            //다른 날짜에 도전하면 토스트 메시지 다르게 띄우기
             if(date == null || !date.equals(this.today)){
                 btn = days.get(dayNumber);
                 dayClick();
+                for(int i = 6; i > dayNumber; i--){
+                    days.get(i).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(getActivity().getApplicationContext(), (dayNumber+1)+"번째 날을 도전하세요.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+            else {
+                for(int i = 6; i > dayNumber -1; i--){
+                    days.get(i).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(getActivity().getApplicationContext(), "오늘 챌린지는 이미 도전하셨습니다.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
             }
         }
         //완료된 날짜 토스트
@@ -72,14 +90,6 @@ public class Challenge_my_dialog extends androidx.fragment.app.DialogFragment {
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(getActivity().getApplicationContext(), "완료된 날짜입니다.", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
-        for(int i = 6; i >= dayNumber; i--){
-            days.get(i).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(getActivity().getApplicationContext(), "오늘 챌린지는 이미 도전하셨습니다.", Toast.LENGTH_SHORT).show();
                 }
             });
         }
