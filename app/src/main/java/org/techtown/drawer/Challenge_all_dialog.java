@@ -59,7 +59,6 @@ public class Challenge_all_dialog extends androidx.fragment.app.DialogFragment {
                     editor.putStringSet("content", contents);
                     editor.putStringSet("image", images);
                     editor.apply();
-                    Log.v("all_dialog", sharedPreferences.getAll().toString());
 
                     startActivity(intent);
                     Toast toasting = Toast.makeText(getActivity().getApplicationContext(), "나의 챌린지에 추가 성공!", Toast.LENGTH_SHORT);

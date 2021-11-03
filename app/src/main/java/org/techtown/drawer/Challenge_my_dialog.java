@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,7 +32,7 @@ public class Challenge_my_dialog extends androidx.fragment.app.DialogFragment {
     String today = new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis()));
     private SharedPreferences sharedPreferences;
     TextView tvTitle;
-    Button exitBtn;
+    ImageButton exitBtn;
     Button retryBtn;
     TextView tvSuccess;
 
@@ -118,7 +119,7 @@ public class Challenge_my_dialog extends androidx.fragment.app.DialogFragment {
         days.add((Button) view.findViewById(R.id.challenge_fifth));
         days.add((Button) view.findViewById(R.id.challenge_sixth));
         days.add((Button) view.findViewById(R.id.challenge_last));
-        exitBtn = (Button) view.findViewById(R.id.btn_exit);
+        exitBtn = (ImageButton) view.findViewById(R.id.btn_exit);
         retryBtn = (Button) view.findViewById(R.id.btn_retry);
         tvSuccess = view.findViewById(R.id.tvSuccess);
     }
